@@ -22,6 +22,7 @@
     "linebreak-style": "off",
     "no-plusplus": "off",
     "no-alert": "error",
-    "max-len": [2, 125, 4, { "ignoreUrls": true }]
+    "max-len": [2, 125, 4, { "ignoreUrls": true }],
+    "react/prop-types": 0
   }
 }

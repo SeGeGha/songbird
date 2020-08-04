@@ -68,6 +68,13 @@ const config = (env = {}) => {
             { loader: 'sass-loader' },
           ],
         },
+        {
+          test: /\.css$/i,
+          use: [
+            { loader: getLoader() },
+            { loader: 'css-loader' },
+          ],
+        },
       ],
     },
     resolve: {
