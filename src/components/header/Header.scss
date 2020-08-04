@@ -1,0 +1,14 @@
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+
+  &__title {
+    padding-left: 20px;
+  }
+  
+  &__score {
+    padding-right: 20px;
+  }
+}
