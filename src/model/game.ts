@@ -19,7 +19,7 @@ class Game {
   private isFinish: boolean;
 
   constructor() {
-    this.currentRoundId = 5;
+    this.currentRoundId = 0;
     this.score = 0;
     this.isFinish = false;
 
@@ -74,7 +74,7 @@ class Game {
     this.isFinish = this.currentRoundId === this.getRoundsNames().length;
 
     if (this.isFinish) {
-      this.currentRoundId = 5;
+      this.currentRoundId = 0;
 
       return {
         isFinish: this.isFinish,

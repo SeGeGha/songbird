@@ -11,13 +11,16 @@ interface InfoWindowProps {
   description?: string,
 }
 
-const InfoWindow: React.FC<InfoWindowProps> = ({
-  imageSrc, name, soundSrc, description,
-}) => {
-  const hasName = name;
+const InfoWindow: React.FC<InfoWindowProps> = (props) => {
+  const {
+    imageSrc, name, soundSrc, description,
+  } = props;
+
+  const isUpdate = name && imageSrc && soundSrc;
+
   return (
     <div className="info-window">
-      {hasName && (
+      {isUpdate && (
       <>
         <div className="info-window__image">
           <img
@@ -29,6 +32,7 @@ const InfoWindow: React.FC<InfoWindowProps> = ({
           <p className="info-window__name">{name}</p>
           <AudioPlayer
             src={soundSrc}
+            autoPlayAfterSrcChange={false}
           />
         </div>
       </>
