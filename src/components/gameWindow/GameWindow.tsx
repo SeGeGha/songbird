@@ -21,7 +21,6 @@ const GameWindow: React.FC<GameWindowProps> = ({
 }) => {
   const { expectedAnswer, answerStorage, isCompleted } = roundInfo;
   const { imageSrc, soundSrc, name } = expectedAnswer;
-
   const [currentAnswerInfo, setCurrentAnswerInfo] = useState<RoundAnswerInfo>(null);
   const [roundIsEnd, setRoundEnd] = useState(false);
 

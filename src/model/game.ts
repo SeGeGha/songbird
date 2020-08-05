@@ -1,4 +1,5 @@
 import { sourceData } from '../constant/sourceData';
+import scoreStep from '../constant/gameConfig';
 
 interface GameRoundInfo {
   name: string,
@@ -18,7 +19,7 @@ class Game {
   private isFinish: boolean;
 
   constructor() {
-    this.currentRoundId = 0;
+    this.currentRoundId = 5;
     this.score = 0;
     this.isFinish = false;
 
@@ -56,10 +57,10 @@ class Game {
   checkUserAnswer(userAnswer: string) {
     const { expectedAnswer, isCompleted: roundIsCompleted, userAnswers } = this.roundsInfo[this.currentRoundId];
     const isRightAnswer: boolean = expectedAnswer.name === userAnswer;
-    console.log(expectedAnswer.name, userAnswer);
+
     if (isRightAnswer && !roundIsCompleted) {
       this.roundsInfo[this.currentRoundId].isCompleted = true;
-      this.score += 5 - userAnswers.size;
+      this.score += scoreStep - userAnswers.size;
     } else if (!roundIsCompleted) {
       this.roundsInfo[this.currentRoundId].userAnswers.add(userAnswer);
     }
@@ -73,7 +74,7 @@ class Game {
     this.isFinish = this.currentRoundId === this.getRoundsNames().length;
 
     if (this.isFinish) {
-      this.currentRoundId = 0;
+      this.currentRoundId = 5;
 
       return {
         isFinish: this.isFinish,
@@ -83,6 +84,15 @@ class Game {
     return {
       answersInfo: this.getRoundInfo(),
       roundAnswerNames: this.getRoundAnswerNames(),
+    };
+  }
+
+  getScore() {
+    const roundsCount = this.getRoundsNames().length;
+
+    return {
+      userScore: this.score,
+      maxScore: scoreStep * roundsCount,
     };
   }
 }
