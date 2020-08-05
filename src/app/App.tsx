@@ -2,37 +2,56 @@ import React, { useState } from 'react';
 
 import Header from '../components/header/Header';
 import GameWindow from '../components/gameWindow/GameWindow';
+import ResultWindow from '../components/resultWindow/ResultWindow';
 
-import { Game, GameRoundInfo } from '../model/game';
+import { Game } from '../model/game';
 
 import './App.scss';
 
-interface GameStructure {
-  getCurrentScore(): number,
-  getRoundsNames(): Array<string>,
-  getRoundAnswerNames(): Array<string>,
-  getRoundInfo(): GameRoundInfo,
-}
-
 const App = () => {
-  const newGame: GameStructure = new Game();
+  const [newGame] = useState(new Game());
+  const [gameScore, setGameScore] = useState(0);
+  const [activeTabId, setActiveTabId] = useState(0);
+  const [roundInfo, setRoundInfo] = useState({
+    answersInfo: newGame.getRoundInfo(),
+    roundAnswerNames: newGame.getRoundAnswerNames(),
+  });
+  const [isFinishGame, setFinishGame] = useState(false);
 
-  const [gameScore, setGameScore] = useState(newGame.getCurrentScore());
+  const windowContent = isFinishGame ? (<ResultWindow />) : (
+    <GameWindow
+      roundInfo={roundInfo.answersInfo}
+      roundAnswerNames={roundInfo.roundAnswerNames}
+      checkAnswer={(userAnswer) => {
+        const roundIsCompleted = newGame.checkUserAnswer(userAnswer);
 
-  const [roundAnswerNames, setRoundAnswerNames] = useState(newGame.getRoundAnswerNames());
+        if (roundIsCompleted) {
+          setGameScore(newGame.getCurrentScore());
+        }
 
-  const [roundInfo, setRoundInfo] = useState(newGame.getRoundInfo());
+        return roundIsCompleted;
+      }}
+      getNextRound={() => {
+        const { isFinish = false, answersInfo, roundAnswerNames } = newGame.getNextRound();
+
+        if (!isFinish) {
+          setRoundInfo({ answersInfo, roundAnswerNames });
+          setActiveTabId(activeTabId + 1);
+        } else {
+          setFinishGame(isFinish);
+        }
+      }}
+    />
+  );
 
   return (
     <div className="app-wrapper">
       <Header
         currentGameScore={gameScore}
         tabsNames={newGame.getRoundsNames()}
+        activeTabId={activeTabId}
       />
-      <GameWindow
-        roundInfo={roundInfo}
-        roundAnswerNames={roundAnswerNames}
-      />
+      {windowContent}
     </div>
   );
 };

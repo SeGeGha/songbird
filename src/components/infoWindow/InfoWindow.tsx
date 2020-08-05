@@ -1,8 +1,6 @@
 import React from 'react';
 import AudioPlayer from 'react-h5-audio-player';
 
-import imageStub from '../../assets/img/stub.jpg';
-
 import './InfoWindow.scss';
 import 'react-h5-audio-player/lib/styles.css';
 

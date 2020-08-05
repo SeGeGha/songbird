@@ -1,33 +1,38 @@
-import { sourceData, RoundsInfo } from '../constant/sourceData';
+import { sourceData } from '../constant/sourceData';
 
 interface GameRoundInfo {
   name: string,
   isCompleted: boolean,
   answerStorage: Array<RoundAnswerInfo>,
   expectedAnswer: RoundAnswerInfo,
-  userAnswers: Array<RoundAnswerInfo>
+  userAnswers: Set<string>,
 }
 
 class Game {
-  private mainStorage: RoundsInfo;
-
   private score: number;
 
-  private roundInfo: GameRoundInfo;
+  private currentRoundId: number;
+
+  private roundsInfo: Array<GameRoundInfo>;
+
+  private isFinish: boolean;
 
   constructor() {
-    this.mainStorage = sourceData;
+    this.currentRoundId = 0;
     this.score = 0;
+    this.isFinish = false;
 
-    const [firstRoundName, firstRoundAnswersInfo] = Object.entries(this.mainStorage)[0];
+    this.roundsInfo = Object.entries(sourceData).map((round) => {
+      const [roundName, roundAnswersInfo] = round;
 
-    this.roundInfo = {
-      name: firstRoundName,
-      isCompleted: false,
-      answerStorage: firstRoundAnswersInfo,
-      expectedAnswer: firstRoundAnswersInfo[Math.floor(Math.random() * firstRoundAnswersInfo.length)],
-      userAnswers: [],
-    };
+      return {
+        name: roundName,
+        isCompleted: false,
+        answerStorage: roundAnswersInfo,
+        expectedAnswer: roundAnswersInfo[Math.floor(Math.random() * roundAnswersInfo.length)],
+        userAnswers: new Set(),
+      };
+    });
   }
 
   getCurrentScore() {
@@ -35,18 +40,53 @@ class Game {
   }
 
   getRoundsNames() {
-    return Object.keys(this.mainStorage);
+    return this.roundsInfo.map((roundInfo) => roundInfo.name);
   }
 
   getRoundAnswerNames() {
-    return this.roundInfo.answerStorage.map((answer) => answer.name);
+    const { answerStorage: roundAnswersInfo } = this.roundsInfo[this.currentRoundId];
+
+    return roundAnswersInfo.map((answer) => answer.name);
   }
 
   getRoundInfo() {
-    return this.roundInfo;
+    return this.roundsInfo[this.currentRoundId];
+  }
+
+  checkUserAnswer(userAnswer: string) {
+    const { expectedAnswer, isCompleted: roundIsCompleted, userAnswers } = this.roundsInfo[this.currentRoundId];
+    const isRightAnswer: boolean = expectedAnswer.name === userAnswer;
+    console.log(expectedAnswer.name, userAnswer);
+    if (isRightAnswer && !roundIsCompleted) {
+      this.roundsInfo[this.currentRoundId].isCompleted = true;
+      this.score += 5 - userAnswers.size;
+    } else if (!roundIsCompleted) {
+      this.roundsInfo[this.currentRoundId].userAnswers.add(userAnswer);
+    }
+
+    return this.roundsInfo[this.currentRoundId].isCompleted;
+  }
+
+  getNextRound() {
+    this.currentRoundId += 1;
+
+    this.isFinish = this.currentRoundId === this.getRoundsNames().length;
+
+    if (this.isFinish) {
+      this.currentRoundId = 0;
+
+      return {
+        isFinish: this.isFinish,
+      };
+    }
+
+    return {
+      answersInfo: this.getRoundInfo(),
+      roundAnswerNames: this.getRoundAnswerNames(),
+    };
   }
 }
 
 export {
-  Game, RoundsInfo, GameRoundInfo,
+  Game, GameRoundInfo,
 };
