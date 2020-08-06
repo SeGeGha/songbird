@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import soundSender from '../../../model/soundSender';
+
 import './CurrentAnswers.scss';
 
 interface CurrentAnswersProps {
@@ -25,7 +27,9 @@ const CurrentAnswers: React.FC<CurrentAnswersProps> = ({ parentClassName, roundA
             const isRightAnswer = checkAnswer(currentTarget.textContent);
 
             if (!roundIsCompleted) {
-              const btnClass = isRightAnswer ? 'right-answer' : 'false-answer';
+              const btnClass: string = isRightAnswer ? 'right-answer' : 'false-answer';
+
+              soundSender.getDefaultSound(btnClass);
 
               currentTarget.classList.add(btnClass);
 

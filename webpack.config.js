@@ -53,8 +53,19 @@ const config = (env = {}) => {
           use: [{
             loader: 'file-loader',
             options: {
-              name: '[name]-[sha1:hash:4].[ext]',
-              outputPath: 'img',
+              name: '[name].[ext]',
+              outputPath: 'assets/img',
+              esModule: false,
+            },
+          }],
+        },
+        {
+          test: /\.wav$/,
+          use: [{
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'assets/audio',
               esModule: false,
             },
           }],

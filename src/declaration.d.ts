@@ -3,6 +3,11 @@ declare module '*.jpg' {
   export = value;
 }
 
+declare module '*.wav' {
+  const value: string;
+  export = value;
+}
+
 declare interface RoundAnswerInfo {
   id: number | string,
   name: string,

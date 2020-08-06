@@ -7,15 +7,14 @@ import 'react-h5-audio-player/lib/styles.css';
 interface InfoWindowProps {
   imageSrc?: string,
   name?: string,
+  species?: string,
   soundSrc?: string,
   description?: string,
 }
 
-const InfoWindow: React.FC<InfoWindowProps> = (props) => {
-  const {
-    imageSrc, name, soundSrc, description,
-  } = props;
-
+const InfoWindow: React.FC<InfoWindowProps> = ({
+  imageSrc, name, species, soundSrc, description,
+}) => {
   const isUpdate = name && imageSrc && soundSrc;
 
   return (
@@ -30,6 +29,7 @@ const InfoWindow: React.FC<InfoWindowProps> = (props) => {
         </div>
         <div className="wrapper">
           <p className="info-window__name">{name}</p>
+          <p className="info-window__species">{species}</p>
           <AudioPlayer
             src={soundSrc}
             autoPlayAfterSrcChange={false}

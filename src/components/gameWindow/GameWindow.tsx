@@ -29,10 +29,18 @@ const GameWindow: React.FC<GameWindowProps> = ({
     setRoundEnd(false);
   }, [roundInfo, roundAnswerNames]);
 
+  useEffect(() => {
+    if (roundIsEnd) {
+      const mainAudioPlayes = document.querySelector('.game-window .info-window audio ') as HTMLAudioElement;
+      
+      mainAudioPlayes.pause();
+    }
+  }, [roundIsEnd]);
+
   return (
     <main className="app-body game-window">
       <InfoWindow
-        name={isCompleted ? name : '[Hidden]'}
+        name={isCompleted ? name : name}
         imageSrc={isCompleted ? imageSrc : imageStub}
         soundSrc={soundSrc}
       />
@@ -57,6 +65,7 @@ const GameWindow: React.FC<GameWindowProps> = ({
       />
       <InfoWindow
         name={currentAnswerInfo ? currentAnswerInfo.name : ''}
+        species={currentAnswerInfo ? currentAnswerInfo.species : ''}
         imageSrc={currentAnswerInfo ? currentAnswerInfo.imageSrc : ''}
         soundSrc={currentAnswerInfo ? currentAnswerInfo.soundSrc : ''}
         description={currentAnswerInfo ? currentAnswerInfo.description : 'Послушайте плеер. Выберите птицу из списка'}
