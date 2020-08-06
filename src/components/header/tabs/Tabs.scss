@@ -1,5 +1,7 @@
 @import '../../../styles/mixin.scss';
 
+@import '../../../styles/variables.scss';
+
 .tabs {
   width: 100%;
 
@@ -7,9 +9,16 @@
 
   &__tab {
     flex: 1 1 16%;
+    height: 50px;
+    font-size: 0.8rem;
+    background-color: $hover-background-color;
+
+    &:not(:last-child) {
+      border-right: 1px solid $container-background-color;
+    }
   }
 }
 
 .tab--actived {
-  background: red;
+  background: $active-color;
 }

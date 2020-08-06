@@ -11,7 +11,7 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ currentGameScore, tabsNames, activeTabId }) => (
-  <header className="app-header">
+  <header className="app-header container">
     <h1 className="app-header__title">Songbird</h1>
     <p className="app-header__score">
       Ваш счет:

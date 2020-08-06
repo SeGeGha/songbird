@@ -1,24 +1,40 @@
+@import '../../../styles/variables.scss';
+
+@import '../../../styles/mixin.scss';
+
 .game-window {
+
   &__current-answers {
-    width: calc(50% - 20px);
     display: flex;
     flex-wrap: wrap;
+    width: calc(50% - 20px);
+    overflow: hidden;
+    border-radius: $container-border-radius;
+    box-shadow: $container-box-shadow;
 
     button {
       position: relative;
-      text-align: left;
-      padding-left: 30px;
       width: 100%;
+      padding-left: 30px;
+      font-size: 1rem;
+      text-align: left;
+      color: inherit;
+      background-color: $container-background-color;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $hover-background-color;
+      }
 
       &::after {
-        content: '';
         position: absolute;
         top: calc(50% - 10px / 2);
         left: 10px;
-        width: 10px;
-        height: 10px;
-        background: grey;
+        background-color: #808080;
         border-radius: 50%;
+        content: '';
+
+        @include size(10px);
       }
 
       &.right-answer::after {

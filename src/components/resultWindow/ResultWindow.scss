@@ -1,0 +1,28 @@
+@import '../../styles/variables.scss';
+
+@import '../../styles/mixin.scss';
+
+$padding: $default-margin;
+
+.result-window {
+  padding: $padding;
+  
+  @include flex(column, stretch, center);
+
+  &__message {
+    margin: 0 auto;
+    text-align: center;
+
+    @include size(50%, 200px);
+  }
+
+  button {
+    margin-top: $default-margin;
+    font-size: 1rem;
+    background: $active-color;
+    border-radius: $container-border-radius;
+    cursor: pointer;
+
+    @include size(50%, 50px);
+  }
+}

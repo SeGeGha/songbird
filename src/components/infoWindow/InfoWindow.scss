@@ -1,16 +1,20 @@
+@import '../../styles/mixin.scss';
+
+@import '../../styles/variables.scss';
+
 .info-window {
   display: flex;
   flex-wrap: wrap;
 
   &__image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-right: $default-margin;
     overflow: hidden;
-    border-radius: 25px;
-    margin-right: 20px;
-    width: 200px;
-    height: 150px;
+    border-radius: $image-border-radius;
+    box-shadow: $image-box-shadow;
+
+    @include flex(row, center, center);
+
+    @include size(200px, 150px);
 
     img {
       width: inherit;
@@ -18,17 +22,22 @@
   }
 
   &__description {
-    width: 100%;
-    height: 230px;
-    overflow-y: auto;
-    margin-top: 20px;
+    margin-top: $default-margin;
+    padding: 0 5px;
     text-align: justify;
+    overflow-y: auto;
+
+    @include size(100%, 230px);
   }
 }
 
 .wrapper {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+
+  @include flex(column, center);
+
+  .rhap_container {
+    background-color: inherit;
+    box-shadow: none;
+  }
 }

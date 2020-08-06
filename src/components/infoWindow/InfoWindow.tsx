@@ -18,7 +18,7 @@ const InfoWindow: React.FC<InfoWindowProps> = ({
   const isUpdate = name && imageSrc && soundSrc;
 
   return (
-    <div className="info-window">
+    <div className="info-window container">
       {isUpdate && (
       <>
         <div className="info-window__image">

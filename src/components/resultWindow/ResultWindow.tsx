@@ -18,7 +18,9 @@ const ResultWindow: React.FC<ResultWindowProps> = ({ scoreInfo, startNewGame }) 
 
   return (
     <div className="app-body result-window">
-      <h1 className="result-window__title">{message}</h1>
+      <div className="result-window__message container">
+        <h1 className="result-window__title">{message}</h1>
+      </div>
       <button type="button" onClick={() => startNewGame()}>Повторим?</button>
     </div>
   );

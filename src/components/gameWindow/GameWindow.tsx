@@ -31,8 +31,8 @@ const GameWindow: React.FC<GameWindowProps> = ({
 
   useEffect(() => {
     if (roundIsEnd) {
-      const mainAudioPlayes = document.querySelector('.game-window .info-window audio ') as HTMLAudioElement;
-      
+      const mainAudioPlayes: HTMLAudioElement = document.querySelector('.game-window .info-window audio ');
+
       mainAudioPlayes.pause();
     }
   }, [roundIsEnd]);
@@ -40,7 +40,7 @@ const GameWindow: React.FC<GameWindowProps> = ({
   return (
     <main className="app-body game-window">
       <InfoWindow
-        name={isCompleted ? name : name}
+        name={isCompleted ? name : '[******]'}
         imageSrc={isCompleted ? imageSrc : imageStub}
         soundSrc={soundSrc}
       />

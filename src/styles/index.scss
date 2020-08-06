@@ -1,9 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat&family=Open+Sans&display=swap');
 
+@import '../styles/variables.scss';
+
 * {
   margin: 0;
   padding: 0;
   outline: none;
+  border: none;
   font-family: inherit;
 }
 
@@ -17,4 +20,14 @@ body {
   font-family: 'Caveat', 'Open Sans', sans-serif;
   box-sizing: border-box;
   cursor: default;
+  background-color: $background-main-color;
+  color: $color;
+}
+
+.container {
+  border-radius: $container-border-radius;
+  background-color: $container-background-color;
+  box-shadow: $container-box-shadow;
+  padding: 10px;
+  overflow: hidden;
 }
