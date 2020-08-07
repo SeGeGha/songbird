@@ -17,6 +17,7 @@ $padding: $default-margin;
 
     .wrapper {
       width: calc(100% - 200px - 20px);
+      min-width: 280px;
     }
 
     &:first-child {
@@ -28,8 +29,7 @@ $padding: $default-margin;
     }
 
     &:first-child {
-      align-items: center;
-      height: auto;
+      height: max-content;
 
       .info-window__image {
 
@@ -41,6 +41,10 @@ $padding: $default-margin;
         margin: 0;
         padding: 0;
       }
+    }
+
+    &__image {
+      background-color: $background-main-color;
     }
   }
 
@@ -62,6 +66,90 @@ $padding: $default-margin;
 
     &:hover {
       background-color: $hover-background-color;
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+
+  .game-window .info-window:nth-child(3) {
+    justify-content: center;
+    min-height: 600px;
+
+    .wrapper {
+      width: 100% !important;
+
+      .info-window {
+
+        &__name,
+        &__species {
+          text-align: center;
+        }
+      }
+    }
+
+    .info-window {
+
+      &__image {
+        width: 250px;
+        margin: 0;
+        margin-bottom: ($default-margin / 2);
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+
+  .game-window {
+
+    &__current-answers {
+      width: 100%;
+      margin-bottom: $default-margin;
+
+      button {
+        text-align: center;
+      }
+    }
+
+    .info-window {
+
+      &:nth-child(3) {
+        width: 100%;
+        height: max-content;
+        min-height: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 699px) {
+
+  .game-window {
+
+    .info-window {
+
+      .wrapper {
+        width: 100% !important;
+      }
+
+      &.container {
+        padding: ($padding / 2) 0;
+      }
+
+      &:first-child {
+        flex-direction: column;
+        align-items: center;
+
+        .info-window__image {
+          margin: 0;
+          margin-bottom: ($default-margin / 2);
+        }
+
+        .info-window__name {
+          text-align: center;
+        }
+      }
     }
   }
 }

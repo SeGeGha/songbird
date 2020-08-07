@@ -5,7 +5,7 @@ import CurrentAnswers from './currentAnswers/CurrentAnswers';
 
 import { GameRoundInfo } from '../../model/game';
 
-import imageStub from '../../assets/img/stub.jpg';
+import imageStub from '../../assets/img/stub.png';
 
 import './GameWindow.scss';
 

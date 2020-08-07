@@ -10,7 +10,18 @@ $padding: $default-margin;
   @include flex(row, space-between, center);
 
   &__title {
+    position: relative;
     padding-left: $padding;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 100%;
+      width: 100px;
+      height: 56px;
+      background-image: url('../../assets/icon/logo.png');
+      content: '';
+    }
   }
   
   &__score {
@@ -19,5 +30,20 @@ $padding: $default-margin;
 
   .tabs {
     margin-top: $default-margin;
+  }
+}
+
+@media (max-width: 767px) {
+
+  .app-header {
+
+    &__title {
+      padding: 0;
+      font-size: 1.5rem;
+    }
+
+    &__score {
+      padding-right: ($padding / 4);
+    }
   }
 }

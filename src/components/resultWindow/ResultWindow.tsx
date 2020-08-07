@@ -13,8 +13,8 @@ interface ResultWindowProps {
 const ResultWindow: React.FC<ResultWindowProps> = ({ scoreInfo, startNewGame }) => {
   const { maxScore, userScore } = scoreInfo;
   const message = (userScore === maxScore)
-    ? `Вы набрали максимум баллов - ${userScore}!`
-    : `Вы набрали ${userScore} из ${maxScore}`;
+    ? `Поздравляем! Вы набрали максимум баллов - ${userScore}!`
+    : `Вы набрали ${userScore} баллов из ${maxScore}`;
 
   return (
     <div className="app-body result-window">

@@ -5,9 +5,9 @@
 * {
   margin: 0;
   padding: 0;
-  outline: none;
-  border: none;
   font-family: inherit;
+  border: none;
+  outline: none;
 }
 
 html {
@@ -17,17 +17,17 @@ html {
 
 body {
   min-width: 320px;
-  font-family: 'Caveat', 'Open Sans', sans-serif;
   box-sizing: border-box;
-  cursor: default;
-  background-color: $background-main-color;
+  font-family: 'Caveat', 'Open Sans', sans-serif;
   color: $color;
+  background-color: $background-main-color;
+  cursor: default;
 }
 
 .container {
-  border-radius: $container-border-radius;
-  background-color: $container-background-color;
-  box-shadow: $container-box-shadow;
   padding: 10px;
   overflow: hidden;
+  background-color: $container-background-color;
+  border-radius: $container-border-radius;
+  box-shadow: $container-box-shadow;
 }
