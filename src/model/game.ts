@@ -51,6 +51,11 @@ class Game {
   }
 
   getRoundInfo() {
+    this.roundsInfo[this.currentRoundId].answerStorage.forEach((answer) => {
+      const image = new Image();
+      image.src = answer.imageSrc;
+    });
+
     return this.roundsInfo[this.currentRoundId];
   }
 
