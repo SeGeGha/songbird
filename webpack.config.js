@@ -60,7 +60,7 @@ const config = (env = {}) => {
           }],
         },
         {
-          test: /\.wav$/,
+          test: /\.(wav|mp3)$/,
           use: [{
             loader: 'file-loader',
             options: {

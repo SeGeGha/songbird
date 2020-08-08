@@ -13,6 +13,11 @@ declare module '*.wav' {
   export = value;
 }
 
+declare module '*.mp3' {
+  const value: string;
+  export = value;
+}
+
 declare interface RoundAnswerInfo {
   id: number | string,
   name: string,
