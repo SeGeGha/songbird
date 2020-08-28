@@ -1,0 +1,26 @@
+@import '../styles/mixin.scss';
+
+@import '../styles/variables.scss';
+
+$padding: $default-margin;
+
+.app-wrapper {
+  width: 90%;
+  max-width: 1600px;
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0 auto;
+
+  @include flex(column);
+}
+
+.app-header.container {
+  padding: 0;
+  padding-top: $padding;
+  overflow: hidden;
+  border-radius: 0 0 $container-border-radius $container-border-radius;
+}
+
+.info-window.container:first-child {
+  margin-bottom: $default-margin;
+}

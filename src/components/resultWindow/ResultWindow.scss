@@ -1,0 +1,83 @@
+@import '../../styles/variables.scss';
+
+@import '../../styles/mixin.scss';
+
+$padding: $default-margin;
+$default-size: 200px;;
+
+.result-window {
+  padding: $padding;
+  
+  @include flex(column, stretch, center);
+
+  &__message {
+    position: relative;
+    text-align: center;
+
+    @include flex(row, center, center);
+
+    @include size(50%, $default-size);
+
+    &.container {
+      overflow: inherit;
+    }
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 90%;
+      width: 50%;
+      padding-top: 50%;
+      background: url('../../assets/img/finish-bird.png') no-repeat;
+      content: '';
+      background-size: contain;
+    }
+  }
+
+  &__title {
+    line-height: 1em;
+  }
+
+  button {
+    max-width: ($default-size);
+    min-width: ($default-size * 0.75);
+    margin-top: $default-margin;
+    font-size: 1rem;
+    background: $active-color;
+    border-radius: $container-border-radius;
+    cursor: pointer;
+
+    @include size(50%, $default-size * 0.25);
+  }
+}
+
+@media (max-width: 991px) {
+
+  .result-window__title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+
+  .result-window {
+    width: 50%;
+    min-width: 280px;
+    margin: 0 auto;
+
+    button {
+      align-self: flex-start;
+      width: 25%;
+      margin-right: 25%;
+    }
+
+    &__message {
+      width: auto;
+
+      &::after {
+        top: 90%;
+        left: 50%;
+      }
+    }
+  }
+}

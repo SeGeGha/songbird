@@ -1,0 +1,43 @@
+@import '../../styles/mixin.scss';
+
+@import '../../styles/variables.scss';
+
+.info-window {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__image {
+    margin-right: $default-margin;
+    overflow: hidden;
+    border-radius: $image-border-radius;
+    box-shadow: $image-box-shadow;
+
+    @include flex(row, center, center);
+
+    @include size(200px, 150px);
+
+    img {
+      height: 150px;
+    }
+  }
+
+  &__description {
+    margin-top: $default-margin;
+    padding: 0 5px;
+    text-align: justify;
+    overflow-y: auto;
+
+    @include size(100%, 230px);
+  }
+}
+
+.wrapper {
+  width: 100%;
+
+  @include flex(column, center);
+
+  .rhap_container {
+    background-color: inherit;
+    box-shadow: none;
+  }
+}

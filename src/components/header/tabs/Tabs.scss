@@ -1,0 +1,36 @@
+@import '../../../styles/mixin.scss';
+
+@import '../../../styles/variables.scss';
+
+.tabs {
+  flex-wrap: wrap;
+  width: 100%;
+
+  @include flex(row);
+
+  &__tab {
+    flex: 1 1 16%;
+    min-height: 50px;
+    font-size: 0.8rem;
+    background-color: $hover-background-color;
+
+    &:not(:last-child) {
+      border-right: 1px solid $container-background-color;
+    }
+  }
+}
+
+.tab--actived {
+  background: $active-color;
+}
+
+@media (max-width: 767px) {
+
+  .tabs__tab {
+    flex-basis: 33%;
+
+    &:nth-child(3n + 3) {
+      border-right: none;
+    }
+  }
+}
