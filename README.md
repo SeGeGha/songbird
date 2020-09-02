@@ -1,6 +1,8 @@
 # Songbird task :bird:. RSS React 2020q3
 ## Quiz for recognizing birds by their voices
 
+### [Link to deploy](https://segegha-songbird.netlify.app/) - Opera, Firefox, Chrome, Edge.
+
 ### _How to play:_
 1. Listen to audio recording.
 2. Choose a bird from list.
